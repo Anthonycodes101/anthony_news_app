@@ -5,7 +5,7 @@ class Article extends Equatable {
   Article({
     this.author,
     this.title,
-    this.discription,
+    this.description,
     this.content,
     this.url,
     this.urlImage,
@@ -14,16 +14,16 @@ class Article extends Equatable {
 });
   String? author;
   String? title;
-  String? discription;
+  String? description;
   String? content;
   String? url;
   String? urlImage;
-  String? publishedAt;
+  DateTime? publishedAt;
 
  Article.bookmark({
    this.author,
    this.title,
-   this.discription,
+   this.description,
    this.content,
    this.url,
    this.urlImage,
@@ -35,7 +35,7 @@ class Article extends Equatable {
   List<Object?> get props => [
     author,
     title,
-    discription,
+    description,
     content,
     url,
     urlImage,
