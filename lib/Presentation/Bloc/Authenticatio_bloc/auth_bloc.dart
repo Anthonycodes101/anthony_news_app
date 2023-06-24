@@ -57,4 +57,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     }
   }
+  /// Get the current user ID
+  String getCurrentUserId() {
+    return _authRepository.getCurrentUserId();
+  }
 }

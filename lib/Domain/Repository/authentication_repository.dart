@@ -63,6 +63,15 @@ class AuthRepository {
     }
   }
 
+  /// GET CURRENT USER ID
+  String getCurrentUserId() {
+    final user = _firebaseAuth.currentUser;
+    if (user != null) {
+      return user.uid;
+    }
+    return '';
+  }
+
   /// SIGN OUT THE CURRENT USER
   Future<void> signOut() async {
     try {
