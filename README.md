@@ -1,7 +1,4 @@
-# anthony_news_apps
-
-## Getting Started
-
+# anthony_news_app_clean_architecture
 # Register an account in NewsApi.org to get started
 
 [Add your API key in (const String apiKey = '') Common/config]
