@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:anthony_news_apps/injection.dart' as di ;
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
- // di.init();
+  di.init();
   runApp(const MyApp());
 }
 
