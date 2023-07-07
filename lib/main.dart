@@ -1,10 +1,14 @@
 import 'package:anthony_news_apps/Presentation/Bloc/Article_list_bloc/article_list_bloc.dart';
+import 'package:anthony_news_apps/Presentation/Pages/Splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:anthony_news_apps/injection.dart' as di;
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import 'Common/http_sslpinning.dart';
+import 'Common/theme.dart';
+import 'Common/utils.dart';
 import 'Presentation/Bloc/Article_details_bloc/article_detail_bloc.dart';
 import 'Presentation/Bloc/article_category_bloc/article_category_bloc.dart';
 import 'Presentation/Bloc/bookmark_article_bloc/bookmark_article_bloc.dart';
@@ -40,11 +44,29 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<ArticleDetailBloc>(),
         ),
-
         BlocProvider(
           create: (_) => di.locator<BookmarkArticleBloc>(),
         ),
       ],
+      child: MaterialApp(
+        title: 'Headline News',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.light().copyWith(
+          primaryColor: jWhiteColor,
+          textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
+       colorScheme: jColorScheme.copyWith(secondary: jPrimaryColor),
+          bottomNavigationBarTheme: bottomNavigationBarTheme,
+        ),
+        home: SplashScreen(),
+        navigatorObservers: [routeObserver],
+        onGenerateRoute: (RouteSettings settings){
+          switch (settings.name){
+            case '/':
+              return MaterialPageRoute(builder: (_) => const SplashScreen());
+            case 'main_page':
+          }
+        },
+      ),
     );
   }
 }
