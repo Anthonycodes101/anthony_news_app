@@ -1,6 +1,5 @@
 import 'package:anthony_news_apps/Domain/Repository/authentication_repository.dart';
 import 'package:get_it/get_it.dart';
-
 import 'Domain/Usecase/get_article_category.dart';
 import 'Domain/Usecase/get_bookmark_articles.dart';
 import 'Domain/Usecase/get_bookmark_satus.dart';

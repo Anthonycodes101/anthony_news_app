@@ -55,7 +55,7 @@ class _ArticlePageState extends State<ArticlePage> {
       child: BlocBuilder<ArticleTopHeadlineListBloc, ArticleListState>(
         builder: (context, state) {
           if(state is ArticleListLoading) {
-            return const LoadingArticleCard();
+            return const CircularProgressIndicator();
           } else if(state is ArticleListLoaded) {
             return ListView.builder(
               key: const Key('headline_news_item'),

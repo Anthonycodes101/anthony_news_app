@@ -11,7 +11,7 @@ class Article extends Equatable {
     this.urlImage,
     this.publishedAt,
 
-});
+  });
   String? author;
   String? title;
   String? description;
@@ -20,15 +20,15 @@ class Article extends Equatable {
   String? urlImage;
   DateTime? publishedAt;
 
- Article.bookmark({
-   this.author,
-   this.title,
-   this.description,
-   this.content,
-   this.url,
-   this.urlImage,
-   this.publishedAt,
-});
+  Article.bookmark({
+    this.author,
+    this.title,
+    this.description,
+    this.content,
+    this.url,
+    this.urlImage,
+    this.publishedAt,
+  });
 
 
   @override

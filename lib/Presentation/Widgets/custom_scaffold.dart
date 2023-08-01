@@ -36,7 +36,7 @@ class CustomScaffold extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Headline News',
+                'Headlines',
                 style: blackTextStyle.copyWith(fontSize: 16, fontWeight: semiBold),
               ),
               Text(

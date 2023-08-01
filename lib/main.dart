@@ -1,5 +1,8 @@
 import 'package:anthony_news_apps/Presentation/Bloc/Article_list_bloc/article_list_bloc.dart';
+import 'package:anthony_news_apps/Presentation/Pages/Article_page/detail_page.dart';
+import 'package:anthony_news_apps/Presentation/Pages/MainPage/main_page.dart';
 import 'package:anthony_news_apps/Presentation/Pages/Splash/splash.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:anthony_news_apps/injection.dart' as di;
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,10 +12,12 @@ import 'package:provider/provider.dart';
 import 'Common/http_sslpinning.dart';
 import 'Common/theme.dart';
 import 'Common/utils.dart';
+import 'Domain/entities/article.dart';
 import 'Presentation/Bloc/Article_details_bloc/article_detail_bloc.dart';
 import 'Presentation/Bloc/article_category_bloc/article_category_bloc.dart';
 import 'Presentation/Bloc/bookmark_article_bloc/bookmark_article_bloc.dart';
 import 'Presentation/Bloc/search_article_bloc/search_article_bloc.dart';
+import 'Presentation/Pages/Article_page/article_webview_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,21 +54,45 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'Headline News',
+        title: 'Headlines',
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light().copyWith(
           primaryColor: jWhiteColor,
           textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
-       colorScheme: jColorScheme.copyWith(secondary: jPrimaryColor),
+          colorScheme: jColorScheme.copyWith(secondary: jPrimaryColor),
           bottomNavigationBarTheme: bottomNavigationBarTheme,
         ),
         home: SplashScreen(),
         navigatorObservers: [routeObserver],
-        onGenerateRoute: (RouteSettings settings){
-          switch (settings.name){
+        onGenerateRoute: (RouteSettings settings) {
+          switch (settings.name) {
             case '/':
               return MaterialPageRoute(builder: (_) => const SplashScreen());
             case 'main_page':
+              return CupertinoPageRoute(builder: (_) => const MainPage());
+            case 'article-page-details':
+              final article = settings.arguments as Article;
+              return MaterialPageRoute(
+                builder: (_) => DetailPage(article: article),
+                settings: settings,
+              );
+            case 'article-webview-page':
+              final url = settings.arguments as String;
+              return MaterialPageRoute(
+                builder: (_) => ArticleWebviewPage(url: url),
+                settings: settings,
+              );
+
+            default:
+              return MaterialPageRoute(
+                builder: (_) {
+                  return const Scaffold(
+                    body: Center(
+                      child: Text('Page not found :('),
+                    ),
+                  );
+                },
+              );
           }
         },
       ),
