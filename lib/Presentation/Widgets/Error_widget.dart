@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:anthony_news_apps/Common/theme.dart';
 
-class Error extends StatelessWidget {
+class Errors extends StatelessWidget {
   final String message;
 
-  const Error({Key? key,  required this.message }) : super(key: key);
+  const Errors({Key? key,  required this.message }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

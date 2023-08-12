@@ -62,12 +62,10 @@ class MyApp extends StatelessWidget {
           colorScheme: jColorScheme.copyWith(secondary: jPrimaryColor),
           bottomNavigationBarTheme: bottomNavigationBarTheme,
         ),
-        home: SplashScreen(),
+        home: MainPage(),
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
-            case '/':
-              return MaterialPageRoute(builder: (_) => const SplashScreen());
             case 'main_page':
               return CupertinoPageRoute(builder: (_) => const MainPage());
             case 'article-page-details':
